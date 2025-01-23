@@ -1,0 +1,70 @@
+  function greet(){
+            document.write("hi Thrinesh")
+        }
+        greet();
+        document.write("<br>")
+        document.write("hi ravi")
+        document.write("<br>")
+        greet();
+      
+      
+      
+        function g(name){
+        document.write("hello "+name)
+       }
+       let name=prompt("Enter your name")
+       g(name)
+       
+
+       function add(num1,num2){
+        document.write(num1+num2)
+       }
+       add(3,7)
+       document.write("<br>")
+       let num1=parseFloat(prompt("enter num1"))
+       let num2=parseFloat(prompt("enter num2"))
+       add(num1, num2)
+       
+
+       sum=function(n1,n2){
+        let r=n1+n2
+        return r
+       }
+       console.log(sum(8,9))
+
+
+
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const n=parseInt(prompt("enter number"))
+        function prime(n){
+        for(let i=1;i<=n/2;i++){
+            if(n%i==0){
+                return false
+            }
+        }
+        return true
+    }
+    const a=prime(n)
+    if(a){
+        document.write(n+" given number is not a prime number");
+    }
+    document.write(n+" given number is prime")
+
+
+    const n2=parseInt(prompt("enetr num"))
+    
+
+
+
+
+    </script>
+</body>
+</html>
