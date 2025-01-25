@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*function myCallback(data, callback1, callback2) {
+        document.write(data,"<br>");
+        callback1(data);
+        callback2(data);
+    }
+    
+    function callback1(data) {
+        document.write('Callback 1:', data,"<br>");
+    }
+    
+    function callback2(data) {
+        document.write('Callback 2:', data,"<br>");
+    }
+    
+    myCallback('Hello, World!', callback1, callback2);*/
+    
+    
+/*function greet(name ,callback){
+    document.write("hello "+name);
+    callback();
+    //it will execute the callbackfunction after greeting
+}
+function goodbye(){
+    document.write(" a very good boy! ")
+}*/
+
+//greet("Kishore" ,goodbye)
+
+/*greet("Ganesh ",function(){
+    document.write("a python developer")
+})*/
+
+/*function greet(name, callback) {
+    document.write(`Hello ${name}. `);
+    callback();
+}
+
+greet("Ganesh", () => {
+    document.write("A Python developer!");
+}); */
+
+function fetchData(callback){
+    document.write("Fecthing data...."+"<br>")
+setTimeout(function(){
+    document.write("data fecthd"+"<br>");
+callback();
+},20000);
+}
+function processData(){
+    document.write("processing the fecthed data...")
+}
+fetchData(processData);
+
+    </script>
+</body>
+</html>
