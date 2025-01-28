@@ -1,0 +1,84 @@
+training day Tuesday :28/01/25
+
+DOM:
+--its a programming interface in web development that allows us to interact and manipulate(change) the html documents.
+When the webpage is loaded , the browser creates the dom of that particular web page.
+
+When an html file is loaded into the browser , the javascript cannot understand the html document directly.
+
+DOM is basically the Representation of same html document but in a tree like structure.
+
+HTML DOM: allows javascript  to access (to get and as well as to modify all the elements in the html document). 
+
+Keypoints:
+1)Structure:
+the dom represents the structure of html document as tree, node in a tree represents the element an attribute, text
+2)Management:
+using is you caninteract with elements(buttons, h,p), we can modify ,add, ,remove, elements .
+
+Change styles:
+3)event handling:
+4)world wide web consortium:
+<html>
+<head>
+<title>college</title>
+ </head>
+<body>
+
+<h1. 1 am in hyd
+<body>
+
+IN DOM :all the elements are called as objects.
+property:
+the values that we can set to the objects
+(like changing content of an html element)
+method(Action). (like adding or the deleting)
+
+
+Method of document object:
+getting element: 
+1) getting element by id
+2)getting element by class
+3)getting element by tagname
+4)getting element by selector
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .a{
+      color:blue;
+    }
+    .b{
+      color:green;
+    }
+    .c{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+    <h1 class="b" id="a">mallesh</h1>
+    <h1 class="c" id="b"> Venkat</h1>
+    <h1 class="a" id="c">Ramya </h1>
+    <h1 class="c">Hari </h1>
+    <h1 class="a">Kavya</h1>
+    <h1 class="a">Anusha </h1>
+    <h1 class="c">Chiru </h1>
+    <h1 class="b">Ganesh </h1>
+    <h1 class="b">Ravi teja </h1>
+      
+<script>
+  /*let x=document.getElementById("a")
+  console.log(x)*/
+  let x=document.getElementsByClassName('a')
+  console.log(x)
+</script>
+  
+</body>
+</html>
