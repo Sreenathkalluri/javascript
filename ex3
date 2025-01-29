@@ -1,0 +1,99 @@
+Methods of Document Object:
+Getting Element
+1.getting an element by id
+ <h1 class="b" id="a">Sai</h1>
+    <h1 class="c" id="b">ram</h1>
+    <h1 class="a" id="c">ramesh</h1>
+    <h1 class="c" >hari</h1>
+
+// let x=document.getElementsByClassName("a")
+    // console.log(x)
+
+
+2.getting an element by class
+--returns all the elements having the same class name
+--return the in the form of html collection object
+getElementbyClassName() method  return the in the form of html collection object
+An HTML collection is array like list of html  elements.
+Length property provides the size of the collection
+Example:
+ <h1 class="b" >Sai</h1>
+    <h1 class="c" >ram</h1>
+    <h1 class="a" >ramesh</h1>
+    <h1 class="c" >hari</h1>
+
+    <script>
+        let x= document.getElementsByClassName('a')
+            console.log(x)
+//print each element in the html collection
+            for(let i=0;i<x.length;i++){  //i=0;i<3;i++
+                console.log(x[i])
+            }
+
+3.getting an element by tag name
+getElementbyTagName()
+--this method takes a tag name as string and returns an html collection object
+Example:
+    <h1 class="b" >Sai</h1>
+    <h1 class="c" >ram</h1>
+    <h1 class="a" >ramesh</h1>
+    <h1 class="c" >hari</h1>
+
+    <script>
+        let x= document.getElementsByTagName('h1')
+            console.log(x)
+
+            for(let i=0;i<x.length;i++){
+                console.log(x[i])
+            }
+
+Queryselector:
+Queryselector: used to select HTML element by its className , tagname; it only select only the first element 
+Example:
+  <h3 class="b" >Sai</h1>
+    <h1 class="c" >ram</h1>
+    <h1 class="a" >ramesh</h1>
+    <h1 class="c" >hari</h1>
+
+    <script>
+        let x= document.querySelector('h1')
+            console.log(x)
+
+Queryselector all
+
+4.getting an element by query selector methods 
+	
+<h1>
+#9- students
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .a{
+        color: aqua;
+      }
+    </style>
+</head>
+<body>
+
+  <h1 class="a" id="a">Hello</h1>
+  <h1 class="a" id="b">hola</h1>
+  <h1 class="b" id="c">Namaste</h1>
+    <script>
+        // let js = document.getElementById('a');
+        // console.log(js);
+        // let q = document.getElementsByClassName('a');
+        // console.log(q);
+
+        let k = document.createElement('h1');
+        k.className = 'b';
+        k.textContent = 'Hello';
+        console.log(k)
+        document.body.appendChild(k);
+    </script>
+</body>
+</html>
