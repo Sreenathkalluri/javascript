@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let age=parseInt(prompt("Enter your age:"))
+        // if(age>=18){
+        //     let ques=prompt("are you an indian citizen(yes/no)");
+        //     if(ques.toLowerCase()=="yes"){
+        //         alert("you are eligible to vote");
+        //     }
+        //     else if(ques.toLowerCase()=="no"){
+        //         let dest=prompt("have you passed the citizenship test(yes/no)");
+        //         if(dest.toLowerCase()=="yes"){
+        //             alert("you are eligible to vote");
+        //         }
+        //         else{
+        //             alert("you are not eligible to vote");
+        //         }
+        //     }
+        //     else{
+        //         alert("invalid input");
+        //     }
+        // }
+        // else{
+        //     console.log("You are not eligible to vote")
+        // }
+        //discount to calculate= 20% if exp>100 and 10% if exp<100 and >50 and if cust=premium member discount extra 5%
+        let status=prompt("are you a premium member?(yes/no)")
+        let exp=parseInt(prompt("Enter the amount of money you have spent"))
+        if(exp>=100){
+            if(status.toLowerCase()=="yes"){
+                discount=0.25*exp
+                alert("discount="+discount)
+            }
+            else{
+                discount=0.20*exp
+                alert("discount="+discount)
+            }
+        }
+        if(exp<100 && exp>=50){
+            if(status.toLowerCase()=="yes"){
+                discount=0.15*exp
+                alert("discount=",discount)
+            }
+            else{
+                discount=0.10*exp
+                alert("discount=",discount)
+            }
+        }
+    </script>
+</body>
+</html>
