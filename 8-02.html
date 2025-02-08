@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper-Advanced Bulb Toggle</title>
+    <style>
+        :root {
+            --bulb-off: #ffffff;
+            --bulb-on: #ffeb3b;
+            --bg-off: #0a0a0a;
+            --bg-on: #fff9c4;
+            --glow-color: rgba(255, 235, 59, 0.8);
+            --button-bg: #ffcc00;
+            --button-border: #b8860b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background 1s ease-in-out;
+            background-color: var(--bg-off);
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .bulbWrapper {
+            position: relative;
+        }
+
+        .bulbImage {
+            height: 300px;
+            width: auto;
+            transition: filter 0.5s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .glow {
+            filter: drop-shadow(0 0 40px var(--glow-color)) drop-shadow(0 0 80px var(--glow-color));
+            animation: flicker 1s infinite alternate;
+            transform: scale(1.05);
+        }
+
+        @keyframes flicker {
+            0% { filter: drop-shadow(0 0 50px var(--glow-color)); }
+            100% { filter: drop-shadow(0 0 80px var(--glow-color)); }
+        }
+
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-3px); }
+        }
+
+        .button {
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(145deg, var(--button-bg), #ffdf80);
+            border: 3px solid var(--button-border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 20px rgba(255, 255, 0, 0.5);
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background: linear-gradient(145deg, #ffdf80, var(--button-bg));
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(255, 255, 0, 0.7);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 10px rgba(255, 255, 0, 0.4);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            background: rgba(255, 255, 0, 0.7);
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .lightEffect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 235, 59, 0.6) 0%, rgba(255, 235, 59, 0) 80%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            filter: blur(50px);
+            z-index: -1;
+        }
+
+        .lightEffect.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bulbWrapper">
+            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/bulb-go-off-img.png" class="bulbImage" id="bulbImage" alt="Bulb">
+            <div class="lightEffect" id="lightEffect"></div>
+        </div>
+        <button class="button" id="toggleButton" onclick="toggleLight(event)">Turn On</button>
+    </div>
+
+    <script>
+        let isOn = false;
+
+        function toggleLight(event) {
+            const body = document.body;
+            const bulbImage = document.getElementById('bulbImage');
+            const toggleButton = document.getElementById('toggleButton');
+            const lightEffect = document.getElementById('lightEffect');
+
+            isOn = !isOn;
+
+            if (isOn) {
+                body.style.backgroundColor = 'var(--bg-on)';
+                bulbImage.src = 'https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/bulb-go-on-img.png';
+                toggleButton.innerText = 'Turn Off';
+                bulbImage.classList.add('glow', 'shake');
+                lightEffect.classList.add('active');
+            } else {
+                body.style.backgroundColor = 'var(--bg-off)';
+                bulbImage.src = 'https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/bulb-go-off-img.png';
+                toggleButton.innerText = 'Turn On';
+                bulbImage.classList.remove('glow', 'shake');
+                lightEffect.classList.remove('active');
+            }
+
+            // Button Ripple Effect
+            const ripple = document.createElement("span");
+            const rect = toggleButton.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+            ripple.classList.add("ripple");
+            toggleButton.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        }
+    </script>
+</body>
+</html>
