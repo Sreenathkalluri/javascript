@@ -1,1 +1,244 @@
 
+/* Counter.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    font-family: 'Poppins', sans-serif;
+}
+
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.counter-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+h1:hover {
+    transform: scale(1.1);
+}
+
+button {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(255, 75, 75, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 75, 75, 0.7);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Button Glow Effect */
+button::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+button:hover::before {
+    opacity: 1;
+}import React, {useState} from 'react';
+import './counter.css';
+
+const ThemeToggler=()=>{
+    const[theme,setTheme]=useState('light')
+    const toggleTheme=()=>{
+        setTheme(prevTheme=>(prevTheme==='light'?'dark':'light'))
+    }
+    return(
+        <div style={{backgroundColor:theme==='light'?'white':'black',color:theme==='light'? 'black':'white',textAlign:'center'}}>
+<h1>the Current theme is {theme}</h1>
+<button onClick={toggleTheme}>toggleTheme</button>
+        </div>
+    )
+}
+const Counter=()=>{
+    const [count, setCount]=useState(0);
+    return(
+        <div>
+            <h1>{count}</h1>
+            <button onClick={()=>setCount(count+1)}>Increment</button>
+            <button onClick={()=>setCount(count-1)}>Decrement</button>
+        </div>
+    )
+}
+export default Counter;/* .App {
+  text-align: center;
+  background-image: url("https://promova.com/content/medium_list_of_fruits_6f8aa72869.png");
+  height: 100vh;
+  background-size: cover;
+  padding: 5px;
+} */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+import React from "react";
+import "./App.css";
+import Counter from "./counter";  // Correct import
+
+const App = () => {
+  return (
+    <div className="app-container">  {/* Added a className */}
+      <Counter />
+    </div>
+  );
+};
+
+export default App;
+Assignment 1
+ Data Types in Programming
+ What is a Data Type?
+ A data type is an attribute of a variable that tells the compiler or interpreter how the programmer
+ intends to use the variable. It determines what kind of value a variable can hold and what operations
+ can be performed on that value.
+ Data types are broadly categorized into two types:
+ 1. Primitive Data Types
+ 2. Non-Primitive Data Types
+ 1. Primitive Data Types
+ A primitive data type is pre-defined by the programming language. It represents simple values, and
+ its size and type are fixed. Primitive data types do not have additional built-in methods.
+ Types of Primitive Data Types
+ 1. Number- In Java, different number types are used depending on size and precision, such as int, byte, long,
+ double, etc.- In JavaScript, we use let or const to assign numeric values, and all numbers (integers and floating
+ points) are treated as Number type.
+ Example:
+ Java:
+ int num = 10;
+ double price = 99.99;
+ JavaScript:
+ let num = 10;
+ let price = 99.99;
+2. String
+ A String is used to store text data. It is a sequence of characters enclosed in quotes.- In Java, String is a predefined class used to store text values.- In JavaScript, strings can be written inside double (" ") or single (' ') quotes.
+ Example:
+ Java:
+ String name = "John";
+ JavaScript:
+ let name = "John";
+ 3. Boolean
+ A Boolean represents one of two possible values: true or false.- Used for logical operations and decision-making.
+ Example:
+ Java:
+ boolean isJavaFun = true;
+ JavaScript:
+ let isJavaScriptFun = true;
+ 4. Null and Undefined (JavaScript only)- null: Represents an empty or non-existent value.- undefined: A variable that has been declared but not assigned a value.
+ Example:
+ JavaScript:
+ let x = null;
+ let y;
+ console.log(y); // undefined
+5. Symbol (JavaScript only)- Symbol is used to create unique values.
+ Example:
+ JavaScript:
+ let id = Symbol("unique");
+ 6. BigInt (JavaScript only)- Used to store numbers larger than Number type can handle.
+ Example:
+ JavaScript:
+ let bigNumber = 12345678901234567890n;
+ 2. Non-Primitive Data Types
+ Non-primitive data types are more complex and allow storing multiple values. These types are not
+ pre-defined by the programming language; they are created by the programmer.
+ 1. Object- An Object is a collection of key-value pairs.- Used to store multiple related values.
+ Example:
+ Java:
+ class Person {
+    String name = "Alice";
+ }
+ JavaScript:
+ let person = { name: "Alice", age: 25 };
+ 2. Array
+- An Array is a collection of multiple values stored in a single variable.- In Java, arrays have a fixed size, whereas in JavaScript, they are dynamic.
+ Example:
+ Java:
+ int[] numbers = {1, 2, 3, 4};
+ JavaScript:
+ let numbers = [1, 2, 3, 4];
+ 3. Function (JavaScript only)- Functions are reusable blocks of code that perform a specific task.- In JavaScript, functions are also treated as objects.
+ Example:
+ JavaScript:
+ function greet() {
+  return "Hello, world!";
+ }
+ 4. Date (JavaScript only)- Used to handle date and time values.
+ Example:
+ JavaScript:
+ let today = new Date()
