@@ -1,1 +1,153 @@
 
+import React from "react";
+import ProfileCard from "./ProfileCard";
+import './App.css'
+
+const App = () => {
+  const users = [
+    { name: "ashish", greeting: "Hello", imageSrc: "https://www.mruexams.com/SBCMSSTUDENT/Frm_StudentPhoto.aspx?StudentCode=10117" },
+    { name: "surya", greeting: "Hey", imageSrc: "https://www.mruexams.com/SBCMSSTUDENT/Frm_StudentPhoto.aspx?StudentCode=10107" },
+    { name: "akshith", greeting: "Welcome", imageSrc: "https://www.mruexams.com/SBCMSSTUDENT/Frm_StudentPhoto.aspx?StudentCode=10109" },
+  ];
+
+  return (
+    <div className="flex flex-col items-center space-y-4 p-6">
+      {users.map((user, index) => (
+        <ProfileCard key={index} {...user} />
+      ))}
+    </div>
+  );
+};
+
+export default App;
+
+
+
+/*
+Scenario 2: Reusable Component for Multiple Cards
+Imagine you're building a React application where you need to display several user profiles. Each profile contains a name, a greeting message, and an image. You want to create a reusable component for displaying these profiles, so you can easily create cards
+for each user by just passing different props.
+
+Task:
+Create a ProfileCard component that accepts props like name, greeting, and imageSrc
+Display the profile card with the user's name, greeting, and image,
+Use this ProfileCard component multiple times with different props for each user.
+*/
+
+/*
+Question: How would you implement a reusable ProfileCard component that accepts dynamic props like name, greeting, and imageSrc and renders these dynamically for multiple users on the same page? Show an example of how to render multiple ProfileCard components
+*/
+
+
+.profile-card {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 400px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .profile-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .profile-image {
+    width: 80px; /* Bigger profile picture */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  import React from "react";
+import "./ProfileCard.css"; // Import CSS for better styling
+
+const ProfileCard = ({ name, greeting, imageSrc }) => {
+  return (
+    <div className="profile-card">
+      <img className="profile-image" src={imageSrc} alt={name} />
+      <div className="profile-info">
+        <h2 className="profile-name">{greeting}, {name}!</h2>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileCard;
+/* .App {
+  text-align: center;
+  background-image: url("https://promova.com/content/medium_list_of_fruits_6f8aa72869.png");
+  height: 100vh;
+  background-size: cover;
+  padding: 5px;
+} */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+
+
+
