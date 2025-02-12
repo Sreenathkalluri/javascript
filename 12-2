@@ -1,1 +1,62 @@
+import React from "react"
+import "./App.css";
+import Parent from "./Parent.js";
+function App(){
+    
+    return(
+        <div className="App profile">
+            <Parent/>
+        </div>
+    )
+}
+export default App;
+import { useState } from "react";
+import "./App.css";
+import ChildA from "./ChildA";
+import ChildB from "./ChildB";
+import './parent.css';
+const Parent = () => {
+    const [count, setCount] = useState(0);
+    
+    const increment = () => {
+        setCount((c) => c + 1);
+    };
 
+    return (
+        <div>
+            <ChildA />
+            <ChildB count={count} increment={increment} />
+        </div>
+    );
+};
+
+export default Parent;
+import React from "react";
+
+const ChildB = ({ count, increment }) => {
+    console.log("Child B rendered");
+    return (
+        <div className="button-increment">
+            <h1>Count: {count}</h1>
+            <button onClick={increment}>Increment</button>
+        </div>
+    );
+};
+
+export default ChildB;
+import {memo} from "react";
+import './parent.css'
+/*
+const ChildA = () => {
+    console.log("Child A rendered");
+    return <h2>This is Child A</h2>;
+};
+
+export default ChildA;
+*/
+const ChildA = () => {
+    console.log("Child A rendered");
+    return <h2>This is Child A</h2>;
+};
+
+export default memo(ChildA);
