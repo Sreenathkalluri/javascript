@@ -1,1 +1,96 @@
+Prop drilling:
+
+Process of passing data from the parent to deeply nested child component through intermediate components, by passing data as prompts to each level
+
+function App(){
+    const data="I am Sreenath"
+    return(
+      <div>
+        <User1 data={data}/>
+      </div>
+    )
+  }
+  
+  function User1({data}){
+    return(
+        <div>
+            <User2 data={data}/>
+        </div>
+    )
+  }
+  
+  function User2({data}){
+    return(
+        <div>
+            <User3 data={data}/>
+        </div>
+    )
+  }
+  
+  function User3({data}){
+    return(
+        <div>
+            <User4 data={data}/>
+        </div>
+    )
+  }
+  
+  function User4({data}){
+      return(
+          <div>
+              {data}
+          </div>
+      )
+  }
+  export default App;
+
+
+
+React Assignment on React Context:
+Imagine you are building an app that displays the details of a user's profile.
+The data about the user includes their name and email. The App
+component will pass this user data to a deeply nested child component
+called Profile.
+
+
+‣ In this assignment, you will:
+1. Use Prop Drilling to pass the data from App to Profile.
+2. Use React Context to pass the data directly to Profile without going
+through each component.
+import React,{createContext,useContext} from "react";
+import "./App.css";
+//create context to hold the data
+const CountContext = createContext();
+
+function App(){
+  const data="HELLO, IAM K.sreenath!!!"
+  return(
+    <div>
+      <CountContext.Provider value={data}>
+        <User1/>
+        
+      </CountContext.Provider>
+    </div>
+  );
+}
+//user1 component
+function User1(){
+  return <User2/>
+}
+//user 2 component
+function User2(){
+  return <User3/>
+}
+//user3 component
+function User3(){
+  return <User4/>
+}
+//user4 component
+function User4(){
+  const data = useContext(CountContext);
+  return(
+    <div>{data}</div>
+  );
+}
+export default App;
 
