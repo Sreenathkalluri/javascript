@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+p {
+  font-size: 18px;
+  color: #333;
+}
+.input-box{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
+  width: 50%;
+  height: 50px;
+  font-size: larger;
+}
+
+.text{
+  font-size: 30px;
+  font-weight: bold;
+}
+.App{
+  text-align: center; 
+  background-image: linear-gradient(to right, pink,rgb(199, 72, 146), purple);
+  height: 100vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}import React,{ useState } from "react";
+import "./App.css"
+function App(){
+
+  const[isHovered, setIsHovered]=useState(false);
+
+  const handleMouseEnter=()=>{
+    setIsHovered(true);
+  }
+
+  const handleMouseLeave=()=>{
+    setIsHovered(false);
+  }
+
+  return(
+    <div className="App">
+      <button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} 
+      style={{backgroundColor:isHovered ? "lightblue" : "lightgray",
+              color:isHovered ? "white" : "black"
+      }}> Hover Me</button>
+
+      {isHovered && <p>Mouse is over the button!</p>}
+    </div>
+    )
+}
+
+export default App;
